@@ -1,0 +1,116 @@
+<!DOCTYPE>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="learingpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+       
+        <header>
+            <a href="#"><img src="%EC%83%81%EB%AA%85%EB%A1%9C%EA%B3%A0.png" alt="Icon" width="400"></a>
+           
+            <p1>단어 학습</p1>
+            
+            <ul>
+                <li>
+                    <a
+                       href="#">단어 학습    
+                    </a>
+                </li>
+                <li>
+                    <a
+                       href="#">데일리 테스트     
+                    </a>
+                </li>
+                <li>
+                    <a
+                       href="#">나의 단어장    
+                    </a>
+                </li>
+            </ul>
+           
+            <hr/>
+              <a input type="button" onclick="new_window();"><i class="fa-sharp fa-regular fa-plus fa-4x"></i></a>
+        </header>
+        <section>
+            <div id="word">영단어 학습하기</div>
+            <div id="meaning"></div>
+             <div id="wordnum"></div>
+             
+            
+            
+        </section>
+        <span><button id="previousButton">Previous</button>
+        <button id="nextButton">Next</button></span>
+        
+        <footer>
+           <br>
+           <br>
+           <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            Copyright(c) for<a href="https://www.smu.ac.kr/"> Sangmyung voca</a>
+        </footer>
+    </div>
+    <script>
+        
+    // Add event listener to the nextButton
+    document.getElementById("nextButton").addEventListener("click", loadNextWord);
+    document.getElementById("previousButton").addEventListener("click", loadpreviousWord);
+    // Example words and meanings
+    
+    var words = ["circumscribe","speculate ","impression","convenient","conveniently","formerly","sophisticated ","sophistication", "consecutive", "completely"];
+    var meanings = ["제한하다, 억제하다","추측하다, 짐작하다","인상, 감명","편리한","편리하게","이전에, 예전에","세련된, 정교한, 복잡한","세련, 정교함","연속적인, 연이은", "완전히"];
+    
+    // Counter variable to keep track of the current word
+    var currentWordIndex = 0;
+    var wordNumberElement = document.getElementById("wordnum");
+    // Function to load the next word and meaning
+       
+        //미니 팝업창
+        function new_window() {
+        window.open(
+          "addgroup.html",
+          "addgroup",
+          "width=500, height=500, top=50, left=50"
+        );
+      }
+        
+    function loadNextWord() {
+              if (currentWordIndex >= words.length) {
+        alert("모든 단어를 학습하셨습니다.");
+                return;
+      }
+      // Update word and meaning
+      document.getElementById("word").textContent = words[currentWordIndex];
+      document.getElementById("meaning").textContent = meanings[currentWordIndex];
+     
+      // Increment the currentWordIndex
+      currentWordIndex++;
+        wordNumberElement.textContent =currentWordIndex+"/10";
+    }
+      function loadpreviousWord() {
+          // Reset the currentWordIndex if it exceeds the array length
+      if (currentWordIndex <=-1) {
+       alert("첫번째 페이지입니다.");
+                return;
+      }
+      // Update word and meaning
+      document.getElementById("word").textContent = words[currentWordIndex];
+      document.getElementById("meaning").textContent = meanings[currentWordIndex];
+      
+      // Increment the currentWordIndex
+      currentWordIndex--;
+       wordNumberElement.textContent =currentWordIndex+"/10";
+      
+         
+    }
+      
+  </script>
+</body>
+</html>
